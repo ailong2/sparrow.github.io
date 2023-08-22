@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title></title>
+    <style type="text/css">
+      .bg {
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-repeat: no-repeat;
+        background-position: 0%;
+        background-size: 400%;
+        animation: bgMove 15s ease infinite;
+      }
+      @keyframes bgMove {
+        from {
+          background-position: 0%;
+        }
+        50% {
+          background-position: 100%;
+        }
+        to {
+          background-position: 0%;
+        }
+      }
+    </style>
+    <style type="text/css">
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+      }
+      .barrage {
+        position: fixed;
+        color: #fff;
+        font-size: 20px;
+        transform: translateX(100vw);
+        animation: xmove 5s linear;
+      }
+      #info {
+        text-align: center;
+        position: fixed;
+        bottom: 120px;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+      .btn-box {
+        text-align: center;
+        height: 48px;
+        position: fixed;
+        bottom: 40px;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+      button {
+        width: 140px;
+        height: 48px;
+        text-align: center;
+        border: none;
+        line-height: 48px;
+        font-size: 20px;
+        background: rgba(0, 0, 0, 0.490521);
+        border-radius: 48px;
+        outline: none;
+      }
+      @keyframes xmove {
+        from {
+          transform: translateX(100vw);
+        }
+        to {
+          transform: translateX(-15vw);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg">
+    <p id="info">说出麻雀的10个优点，点击发射查看</p>
+    <div class="btn-box">
+      <button onclick="send()">发射</button>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var body = document.body;
+    var info = document.getElementById("info");
+    var screenHeight = window.screen.height;
+    var texts = [
+      "脸型好看，额头饱满，美丽动人~",
+      "眼睛炯炯有神，看人的时候会发光",
+      "永远充满活力，富有激情！",
+      "热爱生活，特别特别有趣",
+      "聪慧，有想象力创造力",
+      "声音甜美，唱歌好听，骂人都好听",
+      "善解人意，有同理心",
+      "皮肤挺白，头发也挺多",
+      "五官端正，四肢健全，是个人",
+      "没犯过罪，没坐过牢",
+    ];
+    var index = 0;
+
+    function send() {
+      appendSpan();
+    }
+
+    function appendSpan() {
+      if (index > 9) {
+        window.location.href = "./photo/index.html";
+      }
+      info.style.display = "none";
+      var span = document.createElement("span");
+      span.className = "barrage";
+      var range = screenHeight / 2;
+      span.style.top = parseInt((Math.random() * range) / 20) * 20 + "px";
+      span.innerText = texts[index];
+      index++;
+      body.appendChild(span);
+      let timer = window.setTimeout(function () {
+        body.removeChild(span);
+        window.clearTimeout(timer);
+      }, 5000);
+    }
+  </script>
+</html>

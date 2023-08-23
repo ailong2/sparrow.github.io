@@ -129,4 +129,16 @@
       }, 5000);
     }
   </script>
+  <script type="text/javascript">  
+    var images = new Array()  
+
+      function preload(length) {  
+          for (i = 1; i < length + 1; i++) {  
+              images[i] = new Image()  
+              images[i].src = "./photo/images/" + i + ".jpg" 
+          }  
+      }  
+
+      preload(10)  
+</script> 
 </html>

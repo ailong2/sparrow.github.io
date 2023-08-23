@@ -44,6 +44,8 @@
         font-size: 20px;
         transform: translateX(100vw);
         animation: xmove 5s linear;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
       }
       #info {
         text-align: center;
@@ -92,7 +94,11 @@
   <script type="text/javascript">
     var body = document.body;
     var info = document.getElementById("info");
-    var screenHeight = window.screen.height;
+    var screenWidth = document.body.clientWidth;
+    var screenHeight = document.body.clientHeight;
+    var allTime = (screenWidth / 1000) * 5;
+    var animation = `${allTime}s linear xmove `;
+
     var texts = [
       "脸型好看，额头饱满，美丽动人~",
       "眼睛炯炯有神，看人的时候会发光",
@@ -119,6 +125,7 @@
       info.style.display = "none";
       var span = document.createElement("span");
       span.className = "barrage";
+      span.style.animation = animation;
       var range = screenHeight / 2;
       span.style.top = parseInt((Math.random() * range) / 20) * 20 + "px";
       span.innerText = texts[index];
@@ -127,7 +134,7 @@
       let timer = window.setTimeout(function () {
         body.removeChild(span);
         window.clearTimeout(timer);
-      }, 5000);
+      }, (allTime + 1) * 1000);
     }
   </script>
   <script type="text/javascript">

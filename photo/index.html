@@ -16,7 +16,7 @@
   </head>
   <body class="bg">
     <audio id="audio" src="./music/again.mp3" autoplay></audio>
-    <div class="show">
+    <div id="show" class="show">
       <div class="box" id="box">
         <img src="images/1.jpg" class="img1" />
         <img src="images/2.jpg" class="img2" />
@@ -34,10 +34,11 @@
   <script>
     var body = document.body;
     var box = document.getElementById("box");
-    body.onmouseenter = function () {
+    var show = document.getElementById("show");
+    show.onmouseenter = function () {
       box.style.backgroundImage = "url('./images/tou.jpg')";
     };
-    body.onmouseout = function () {
+    show.onmouseout = function () {
       box.style.backgroundImage = "";
     };
   </script>
@@ -58,5 +59,11 @@
         myAudio.src = src[index];
       });
     })();
+  </script>
+  <script>
+    var show = document.getElementById("show");
+    window.addEventListener("muosemove", function (event) {
+      event.c;
+    });
   </script>
 </html>

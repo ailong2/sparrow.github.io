@@ -146,7 +146,8 @@
   (function(){
     var audioSrc= ["./photo/music/again.mp3", "./photo/music/fire.mp3", "./photo/music/xiaolu.mp3"]  
     function preload() {  
-        for (i = 0; i < audioSrc.length; i++) {  
+        for (i = 0; i < audioSrc.length; i++) {
+          debugger
             var audio = new Audio();
             audio.src = audioSrc[i];
             audio.load();

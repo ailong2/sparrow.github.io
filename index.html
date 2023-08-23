@@ -129,31 +129,35 @@
       }, 5000);
     }
   </script>
-  <script type="text/javascript"> 
-  // preload img
-  (function(){
-    var images = new Array()  
-    function preload(length) {  
-        for (i = 1; i < length + 1; i++) {  
-            images[i] = new Image()  
-            images[i].src = "./photo/images/" + i + ".jpg" 
-        }  
-    }
-    preload(10)
-  })()
-  
-  // preload audio
-  (function(){
-    var audioSrc= ["./photo/music/again.mp3", "./photo/music/fire.mp3", "./photo/music/xiaolu.mp3"]  
-    function preload() {  
+  <script type="text/javascript">
+    // preload img
+    (function () {
+      var images = new Array();
+      function preload(length) {
+        for (i = 1; i < length + 1; i++) {
+          images[i] = new Image();
+          images[i].src = "./photo/images/" + i + ".jpg";
+        }
+      }
+      preload(10);
+    })();
+  </script>
+  <script>
+    // preload audio
+    (function () {
+      var audioSrc = [
+        "./photo/music/again.mp3",
+        "./photo/music/fire.mp3",
+        "./photo/music/xiaolu.mp3",
+      ];
+      function preload() {
         for (i = 0; i < audioSrc.length; i++) {
-          debugger
-            var audio = new Audio();
-            audio.src = audioSrc[i];
-            audio.load();
-        }  
-    }
-    preload()
-  })()
-</script> 
+          var audio = new Audio();
+          audio.src = audioSrc[i];
+          audio.load();
+        }
+      }
+      preload();
+    })();
+  </script>
 </html>

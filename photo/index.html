@@ -15,7 +15,7 @@
     </style>
   </head>
   <body class="bg">
-    <audio id="audio" controls src="./music/again.mp3" autoplay></audio>
+    <audio id="audio" src="./music/again.mp3" autoplay></audio>
     <div class="show">
       <div class="box" id="box">
         <img src="images/1.jpg" class="img1" />
@@ -42,21 +42,21 @@
     };
   </script>
   <!-- music -->
-    <script>
-      (function () {
-        var src = ["./music/again.mp3", "./music/fire.mp3", "./music/xiaolu.mp3"];
-        var index = 0;
-        var myAudio = document.getElementById("audio");
-        window.addEventListener("click", function () {
-          if (myAudio.paused) {
-            myAudio.play();
-          }
-        });
-        myAudio.addEventListener("ended", function () {
-          index++;
-          index = index === src.length ? 0 : index;
-          myAudio.src = src[index];
-        });
-      })();
-    </script>
+  <script>
+    (function () {
+      var src = ["./music/again.mp3", "./music/fire.mp3", "./music/xiaolu.mp3"];
+      var index = 0;
+      var myAudio = document.getElementById("audio");
+      window.addEventListener("click", function () {
+        if (myAudio.paused) {
+          myAudio.play();
+        }
+      });
+      myAudio.addEventListener("ended", function () {
+        index++;
+        index = index === src.length ? 0 : index;
+        myAudio.src = src[index];
+      });
+    })();
+  </script>
 </html>

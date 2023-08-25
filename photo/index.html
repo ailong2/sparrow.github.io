@@ -66,58 +66,40 @@
       event.c;
     });
   </script>
-  <!-- <script>
+  <script>
+    function throttle(fn, wait = 1000) {
+      let timer;
+      return function () {
+        if (!timer) {
+          timer = setTimeout(() => {
+            fn.apply(this, arguments);
+            clearTimeout(timer);
+            timer = null;
+          }, wait);
+        }
+      };
+    }
     (function () {
+      let deg = -25;
       const mousedown = (event) => {
-        console.log(
-          "鼠标点击位置 ———— 距离浏览器最左边的位置：" + event.clientX
-        );
-        console.log("元素距离浏览器最左边的位置：" + box.offsetLeft);
-        let innerX = event.clientX - box.offsetLeft;
-        let innerY = event.clientY - box.offsetTop;
-
-        box.style.borderWidth = "1px";
-        box.style.borderStyle = "solid";
-        box.style.borderColor = "black";
+        let originY = event.clientY;
         // 移动时
-        document.onmousemove = function (event) {
-          box.style.left = event.clientX - innerX + "px";
-          box.style.top = event.clientY - innerY + "px";
-        };
+        document.onmousemove = throttle(function (event) {
+          var distanceY = event.clientY - originY;
+          var distanceDeg = distanceY / 20;
+          deg = deg - distanceDeg;
+          show.style.transform = `rotateX(${deg}deg) translateY(-150px)`;
+          originY = event.clientY;
+        }, 10);
 
         // 抬起时
         document.onmouseup = function () {
           document.onmousemove = null;
-          document.mousedown = null;
-          control();
-          box.style.borderWidth = "";
-          box.style.borderStyle = "";
-          box.style.borderColor = "";
         };
-      };
-
-      // 超出边界处理
-      const control = function () {
-        if (box.offsetLeft < 0) {
-          box.style.left = 0 + "px";
-        }
-
-        if (box.offsetTop < 0) {
-          box.style.top = 0 + "px";
-        }
-
-        if (box.offsetLeft + parseInt(box.style.width) > window.innerWidth) {
-          box.style.left = window.innerWidth - parseInt(box.style.width) + "px";
-        }
-
-        if (box.offsetTop + parseInt(box.style.height) > window.innerHeight) {
-          box.style.top =
-            window.innerHeight - parseInt(box.style.height) + "px";
-        }
       };
 
       // 按下时
       window.addEventListener("mousedown", mousedown, false);
     })();
-  </script> -->
+  </script>
 </html>

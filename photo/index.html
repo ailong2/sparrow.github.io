@@ -45,7 +45,7 @@
   <!-- music -->
   <script>
     (function () {
-      var src = ["./music/again.mp3", "./music/fire.mp3", "./music/xiaolu.mp3"];
+      var src = ["./music/again.mp3", "./music/xiaolu.mp3", "./music/fire.mp3"];
       var index = 0;
       var myAudio = document.getElementById("audio");
       window.addEventListener("click", function () {
@@ -86,7 +86,7 @@
         // 移动时
         document.onmousemove = throttle(function (event) {
           var distanceY = event.clientY - originY;
-          var distanceDeg = distanceY / 20;
+          var distanceDeg = distanceY / 18;
           deg = deg - distanceDeg;
           show.style.transform = `rotateX(${deg}deg) translateY(-150px)`;
           originY = event.clientY;
@@ -100,6 +100,20 @@
 
       // 按下时
       window.addEventListener("mousedown", mousedown, false);
+    })();
+  </script>
+  <script>
+    // preload audio
+    (function () {
+      var audioSrc = ["./photo/music/xiaolu.mp3", "./photo/music/fire.mp3"];
+      function preload() {
+        for (i = 0; i < audioSrc.length; i++) {
+          var audio = new Audio();
+          audio.src = audioSrc[i];
+          audio.load();
+        }
+      }
+      preload();
     })();
   </script>
 </html>
